@@ -16,6 +16,7 @@ This DLL is completly safe, you can grab the source code using DNSpy.
 - [ ] Free craft
 - [ ] Change floor cheat
 - [ ] Destroy environment cheat (eg the wall in front of you)
+- [ ] Load any scene 
 
 # Features
 
