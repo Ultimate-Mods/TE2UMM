@@ -12,7 +12,7 @@ This DLL is completly safe, you can grab the source code using DNSpy.
 - [ ] Multiplayer Cheats
 - [x] Level Editor Cheats/Utility
 - [ ] Better UI Design
-- [ ] Give item with text box
+- [x] Give item with text box (No spaces)
 - [ ] Free craft
 - [ ] Change floor cheat
 - [ ] Destroy environment cheat (eg the wall in front of you)
