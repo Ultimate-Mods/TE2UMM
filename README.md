@@ -6,6 +6,17 @@ This mod menu should only be used in single-player.
 
 This DLL is completly safe, you can grab the source code using DNSpy.
 
+# TO DO LIST
+
+- [x] Player & Prison Cheats
+- [ ] Multiplayer Cheats
+- [x] Level Editor Cheats/Utility
+- [ ] Better UI Design
+- [ ] Give item with text box
+- [ ] Free craft
+- [ ] Change floor cheat
+- [ ] Destroy environment cheat (eg the wall in front of you)
+
 # Features
 
 ## Player Cheat
