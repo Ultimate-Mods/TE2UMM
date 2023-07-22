@@ -1,4 +1,4 @@
-# The Escapists 2 Ultimate Mod Menu Mod Menu
+# The Escapists 2 Ultimate Mod Menu
 
 Mod menu created modifying Assembly-CSharp.dll using DNSpy.
 
