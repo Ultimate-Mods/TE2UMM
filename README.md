@@ -2,11 +2,11 @@
 
 Mod menu created modifying Assembly-CSharp.dll using DNSpy.
 
-This mod menu should only be used in single-player.
+This mod menu **should only** be used in single-player.
 
 This DLL is completly safe, you can grab the source code using DNSpy.
 
-This mod menu only works in Local or Only if you are the Host.
+This mod menu only works in Local/SinglePlayer or **only** if you are the Host.
 
 # TO DO LIST
 
