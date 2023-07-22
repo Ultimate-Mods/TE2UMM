@@ -9,12 +9,12 @@ This DLL is completly safe, you can grab the source code using DNSpy.
 # TO DO LIST
 
 - [x] Player & Prison Cheats
-- [ ] Multiplayer Cheats
+~~ - [ ] Multiplayer Cheats ~~
 - [x] Level Editor Cheats/Utility
 - [ ] Better UI Design
 - [x] Give item with text box (No spaces)
 - [ ] Free craft
-- [ ] Change floor cheat
+- [x] Change floor cheat
 - [ ] Destroy environment cheat (eg the wall in front of you)
 - [ ] Load any scene 
 
