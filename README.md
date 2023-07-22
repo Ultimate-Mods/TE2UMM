@@ -34,7 +34,7 @@ This mod menu only works in Local or Only if you are the Host.
 
 • Unlock every doors (be able to open them)
 
-• Give specificated items (Text field)
+• Give specificated items (Text field) (REVAMPED, it freezes and glitchy but technically better (down for more infos))
 
 • Change floor
 
@@ -55,3 +55,9 @@ This mod menu only works in Local or Only if you are the Host.
 • Bypass Zone Validation (useless if using bypass requirements)
 
 ![](https://media.discordapp.net/attachments/1123000484437958697/1131781481782591580/image.png)
+
+## The Give system
+
+Before, to give an item, I was just checking all items instances that already exists, pick the one the player wanted, then moved it to the player.
+
+Now, I use "Unused" items from the instances (they are empty items and there are like 400 of them), then put the ItemDataID of the item the player wants, then move the unused item to the player inventory.
