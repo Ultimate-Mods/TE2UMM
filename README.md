@@ -13,7 +13,7 @@ This mod menu only works in Local or Only if you are the Host.
 - [x] Player & Prison Cheats
 - [ ] ~~Multiplayer Cheats~~
 - [x] Level Editor Cheats/Utility
-- [ ] Better UI Design
+- [x] Better UI Design
 - [x] Give item with text box (No spaces)
 - [ ] Free craft
 - [x] Change floor cheat
@@ -44,7 +44,7 @@ This mod menu only works in Local or Only if you are the Host.
 
 • Toggle Electirc Fences (Toggleable)
 
-• Make dogs hittable
+• Make all NPCs hittable
 
 • Disable dogs
 
