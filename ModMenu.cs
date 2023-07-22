@@ -12,37 +12,77 @@ namespace ModMenuSpace
 		// Token: 0x06009430 RID: 37936
 		public static void DrawMenu()
 		{
-			if (GUI.Button(new Rect(0f, 0f, 100f, 30f), "Toggle Menu"))
+			GUIStyle guistyle = new GUIStyle();
+			guistyle.fontSize = 12;
+			guistyle.alignment = TextAnchor.MiddleCenter;
+			guistyle.normal.textColor = Color.white;
+			guistyle.normal.background = ModMenu.MakeTexture(2, 2, new Color(0f, 0f, 0f, 0.5f));
+			GUIStyle labelStyle = new GUIStyle();
+			labelStyle.fontSize = 15;
+			labelStyle.alignment = TextAnchor.MiddleCenter;
+			labelStyle.normal.textColor = Color.white;
+			if (GUI.Button(new Rect(0f, 0f, 100f, 30f), "Cheats Menu", guistyle))
 			{
 				ModMenu.MenuVisible = !ModMenu.MenuVisible;
 			}
-			if (GUI.Button(new Rect(0f, 30f, 100f, 30f), "Items Menu"))
+			if (GUI.Button(new Rect(0f, 45f, 100f, 30f), "Items Menu", guistyle))
 			{
 				ModMenu.ItemMenuVisible = !ModMenu.ItemMenuVisible;
 			}
 			if (ModMenu.ItemMenuVisible)
 			{
 				GUI.Box(new Rect(600f, 0f, 500f, 400f), "Items Menu");
-				ModMenu.stringGiveItemToPlayer = GUI.TextField(new Rect(600f, 30f, 200f, 20f), ModMenu.stringGiveItemToPlayer, 25);
-				if (GUI.Button(new Rect(600f, 30f, 100f, 30f), "give item"))
+				ModMenu.stringGiveItemToPlayer = GUI.TextField(new Rect(600f, 30f, 180f, 30f), ModMenu.stringGiveItemToPlayer, 50, guistyle);
+				if (GUI.Button(new Rect(600f, 60f, 180f, 30f), "Give Item: Name", guistyle))
 				{
-					foreach (Item item in UnityEngine.Object.FindObjectsOfType<Item>())
+					foreach (Item item4 in UnityEngine.Object.FindObjectsOfType<Item>())
 					{
-						if (item.ItemName == "Text.Item." + ModMenu.stringGiveItemToPlayer)
+						MonoBehaviour.print("found all items");
+						if (item4.ItemName == "No ItemData Set")
 						{
-							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item, false, RPC_CallContexts.All);
-							T17NetView.Find<Player>(2974).gameObject.GetComponent<CharacterSpeechBubbleHandler>().NewSpeech("Gave " + ModMenu.stringGiveItemToPlayer + " to " + T17NetView.Find<Player>(2974).name, SpeechTone.Positive, 3f, 10, true);
+							foreach (ItemData itemData8 in (ItemData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(ItemData)))
+							{
+								if (itemData8.name == ModMenu.stringGiveItemToPlayer + "_ItemData")
+								{
+									MonoBehaviour.print("found");
+									item4.m_ItemData = itemData8;
+									T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item4, false, RPC_CallContexts.All);
+								}
+							}
+							break;
+						}
+					}
+				}
+				ModMenu.intItemDataIDPlayerWants = GUI.TextField(new Rect(600f, 100f, 180f, 30f), ModMenu.intItemDataIDPlayerWants, 25, guistyle);
+				if (GUI.Button(new Rect(600f, 130f, 180f, 30f), "Give item: ID", guistyle))
+				{
+					foreach (Item item5 in UnityEngine.Object.FindObjectsOfType<Item>())
+					{
+						MonoBehaviour.print("found all items");
+						if (item5.ItemName == "No ItemData Set")
+						{
+							MonoBehaviour.print("found unused items");
+							foreach (ItemData itemData9 in (ItemData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(ItemData)))
+							{
+								if (itemData9.m_ItemDataID == int.Parse(ModMenu.intItemDataIDPlayerWants))
+								{
+									MonoBehaviour.print("found");
+									item5.m_ItemData = itemData9;
+									T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item5, false, RPC_CallContexts.All);
+								}
+							}
+							break;
 						}
 					}
 				}
 			}
 			if (ModMenu.MenuVisible)
 			{
-				GUI.Box(new Rect(100f, 0f, 500f, 400f), ModMenu.MenuLabel);
-				GUI.Label(new Rect(100f, 0f, 180f, 30f), "Player Cheats");
-				GUI.Label(new Rect(450f, 0f, 180f, 30f), "Prison Cheats");
-				GUI.color = Color.magenta;
-				if (GUI.Button(new Rect(100f, 30f, 180f, 30f), ModMenu.MaxPlayerStatsLabel))
+				GUI.Box(new Rect(100f, 0f, 500f, 400f), "TE2UMM");
+				GUI.Label(new Rect(100f, 0f, 180f, 30f), "Player Cheats", labelStyle);
+				GUI.Label(new Rect(400f, 0f, 180f, 30f), "Prison Cheats", labelStyle);
+				GUI.Label(new Rect(400f, 170f, 180f, 30f), "Map Editor Cheats", labelStyle);
+				if (GUI.Button(new Rect(100f, 30f, 180f, 30f), ModMenu.MaxPlayerStatsLabel, guistyle))
 				{
 					ConfigManager instance = ConfigManager.GetInstance();
 					CharacterStats component4 = T17NetView.Find<Player>(2974).gameObject.GetComponent<CharacterStats>();
@@ -73,44 +113,37 @@ namespace ModMenuSpace
 						playerConfig.m_HeatDecayRate = 1000f;
 					}
 				}
-				GUI.color = Color.magenta;
-				if (GUI.Button(new Rect(100f, 60f, 180f, 30f), ModMenu.NoclipLabel))
+				if (GUI.Button(new Rect(100f, 60f, 180f, 30f), ModMenu.NoclipLabel, guistyle))
 				{
 					ModMenu.NoclipActive = !ModMenu.NoclipActive;
 					Rigidbody component2 = T17NetView.Find<Player>(2974).gameObject.GetComponent<Rigidbody>();
 					if (ModMenu.NoclipActive)
 					{
-						GUI.color = Color.magenta;
 						ModMenu.NoclipLabel = "Noclip ON";
 						component2.detectCollisions = false;
 					}
 					else
 					{
-						GUI.color = Color.magenta;
 						ModMenu.NoclipLabel = "Noclip OFF";
 						component2.detectCollisions = true;
 					}
 				}
-				GUI.color = Color.magenta;
-				if (GUI.Button(new Rect(100f, 90f, 180f, 30f), ModMenu.SpeedHackLabel))
+				if (GUI.Button(new Rect(100f, 90f, 180f, 30f), ModMenu.SpeedHackLabel, guistyle))
 				{
 					ModMenu.SpeedHackActive = !ModMenu.SpeedHackActive;
 					CharacterMovement component3 = T17NetView.Find<Player>(2974).gameObject.GetComponent<CharacterMovement>();
 					if (ModMenu.SpeedHackActive)
 					{
-						GUI.color = Color.magenta;
 						ModMenu.SpeedHackLabel = "SpeedHack ON";
 						component3.m_fMaxSpeed = 15f;
 					}
 					else
 					{
-						GUI.color = Color.magenta;
 						ModMenu.SpeedHackLabel = "SpeedHack OFF";
 						component3.m_fMaxSpeed = 4.7f;
 					}
 				}
-				GUI.color = Color.magenta;
-				if (GUI.Button(new Rect(100f, 120f, 180f, 30f), ModMenu.UnlockDoorsLabel))
+				if (GUI.Button(new Rect(100f, 120f, 180f, 30f), ModMenu.UnlockDoorsLabel, guistyle))
 				{
 					ModMenu.UnlockDoorsLabel = "Open Every Doors";
 					foreach (Door door in UnityEngine.Object.FindObjectsOfType<Door>())
@@ -120,8 +153,7 @@ namespace ModMenuSpace
 						DoorManager.GetInstance().SetUpCharacterKeys(T17NetView.Find<Player>(2974));
 					}
 				}
-				GUI.color = Color.magenta;
-				if (GUI.Button(new Rect(400f, 30f, 180f, 30f), ModMenu.LockdownLabel))
+				if (GUI.Button(new Rect(400f, 30f, 180f, 30f), ModMenu.LockdownLabel, guistyle))
 				{
 					ModMenu.LockdownActive = !ModMenu.LockdownActive;
 					PrisonAlertnessManager instance2 = PrisonAlertnessManager.GetInstance();
@@ -153,8 +185,7 @@ namespace ModMenuSpace
 						}
 					}
 				}
-				GUI.color = Color.magenta;
-				if (GUI.Button(new Rect(400f, 60f, 180f, 30f), ModMenu.DogLabel))
+				if (GUI.Button(new Rect(400f, 60f, 180f, 30f), ModMenu.DogLabel, guistyle))
 				{
 					DogEventManager dogEventManager = UnityEngine.Object.FindObjectOfType<DogEventManager>();
 					if (dogEventManager != null)
@@ -174,14 +205,12 @@ namespace ModMenuSpace
 						Debug.Log("[Trainer] Call Off Dogs");
 					}
 				}
-				GUI.color = Color.magenta;
-				if (GUI.Button(new Rect(400f, 90f, 180f, 30f), ModMenu.HittableDogsLabel))
+				if (GUI.Button(new Rect(400f, 90f, 180f, 30f), ModMenu.HittableDogsLabel, guistyle))
 				{
 					ModMenu.HittableDogsActive = !ModMenu.HittableDogsActive;
 					UnityEngine.Object.FindObjectOfType<DogEventManager>();
 					if (ModMenu.HittableDogsActive)
 					{
-						GUI.color = Color.magenta;
 						ModMenu.HittableDogsLabel = "Hittable Dogs ON";
 						using (List<AICharacter>.Enumerator enumerator2 = NPCManager.GetInstance().m_Doggies.GetEnumerator())
 						{
@@ -193,43 +222,39 @@ namespace ModMenuSpace
 							return;
 						}
 					}
-					GUI.color = Color.magenta;
 					ModMenu.HittableDogsLabel = "Hittable Dogs OFF";
 					foreach (AICharacter aicharacter3 in NPCManager.GetInstance().m_Doggies)
 					{
 						((AICharacter_Dog)aicharacter3).gameObject.GetComponent<AIPlayer>().m_CharacterRole = CharacterRole.Dog;
 					}
 				}
-				GUI.color = Color.magenta;
-				if (GUI.Button(new Rect(100f, 150f, 180f, 30f), ModMenu.GiveLabel))
+				if (GUI.Button(new Rect(100f, 150f, 180f, 30f), ModMenu.GiveLabel, guistyle))
 				{
 					ModMenu.GiveLabel = "Give Destroy Wall Tool";
-					foreach (Item item2 in UnityEngine.Object.FindObjectsOfType<Item>())
+					foreach (Item item6 in UnityEngine.Object.FindObjectsOfType<Item>())
 					{
-						if (item2.ItemName == "Text.Item.MaintenanceSwissDestroy" && !ModMenu.GaveItem)
+						if (item6.ItemName == "Text.Item.MaintenanceSwissDestroy" && !ModMenu.GaveItem)
 						{
 							ModMenu.GaveItem = true;
-							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item2, false, RPC_CallContexts.All);
+							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item6, false, RPC_CallContexts.All);
 						}
 					}
 					ModMenu.GaveItem = false;
 				}
-				GUI.color = Color.magenta;
-				if (GUI.Button(new Rect(100f, 180f, 180f, 30f), ModMenu.GiveStaffKeyLabel))
+				if (GUI.Button(new Rect(100f, 180f, 180f, 30f), ModMenu.GiveStaffKeyLabel, guistyle))
 				{
 					ModMenu.GiveStaffKeyLabel = "Give Staff Key";
-					foreach (Item item3 in UnityEngine.Object.FindObjectsOfType<Item>())
+					foreach (Item item7 in UnityEngine.Object.FindObjectsOfType<Item>())
 					{
-						if (item3.ItemName == "Text.Item.StaffKey" && !ModMenu.GaveItem)
+						if (item7.ItemName == "Text.Item.StaffKey" && !ModMenu.GaveItem)
 						{
 							ModMenu.GaveItem = true;
-							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item3, false, RPC_CallContexts.All);
+							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item7, false, RPC_CallContexts.All);
 						}
 					}
 					ModMenu.GaveItem = false;
 				}
-				GUI.color = Color.magenta;
-				if (GUI.Button(new Rect(400f, 120f, 180f, 30f), ModMenu.ElectricFencesLabel))
+				if (GUI.Button(new Rect(400f, 120f, 180f, 30f), ModMenu.ElectricFencesLabel, guistyle))
 				{
 					ModMenu.ElectricFencesActive = !ModMenu.ElectricFencesActive;
 					PrisonPowerManager instance3 = PrisonPowerManager.GetInstance();
@@ -248,12 +273,12 @@ namespace ModMenuSpace
 						}
 					}
 				}
-				if (GUI.Button(new Rect(400f, 150f, 180f, 30f), "[E] Force Validate Zones"))
+				if (GUI.Button(new Rect(400f, 200f, 180f, 30f), "[E] Force Validate Zones", guistyle))
 				{
 					LevelEditor_ZoneManager.GetInstance().GetInvalidZonesInLayer(BaseLevelManager.LevelLayers.GroundFloor, ref ModMenu.Test).m_bValid = true;
 					MonoBehaviour.print("yes");
 				}
-				if (GUI.Button(new Rect(100f, 210f, 180f, 30f), "Unlock every Doors"))
+				if (GUI.Button(new Rect(100f, 210f, 180f, 30f), "Unlock every Doors", guistyle))
 				{
 					foreach (Door door2 in UnityEngine.Object.FindObjectsOfType<Door>())
 					{
@@ -261,7 +286,7 @@ namespace ModMenuSpace
 						T17NetView.Find<Player>(2974).AddAllowedDoor(door2, null);
 					}
 				}
-				if (GUI.Button(new Rect(400f, 180f, 180f, 30f), "[E] Bypass Requirements"))
+				if (GUI.Button(new Rect(400f, 230f, 180f, 30f), "[E] Bypass Requirements", guistyle))
 				{
 					foreach (ZoneDetailsManager.ZoneDetails zoneDetails in UnityEngine.Object.FindObjectOfType<ZoneDetailsManager>().m_Zones)
 					{
@@ -276,16 +301,16 @@ namespace ModMenuSpace
 						}
 					}
 				}
-				if (GUI.Button(new Rect(100f, 240f, 180f, 30f), "All NPC Hittable"))
+				if (GUI.Button(new Rect(100f, 240f, 180f, 30f), "All NPC Hittable", guistyle))
 				{
-					AIPlayer[] array3 = UnityEngine.Object.FindObjectsOfType<AIPlayer>();
-					for (int k = 0; k < array3.Length; k++)
+					AIPlayer[] array6 = UnityEngine.Object.FindObjectsOfType<AIPlayer>();
+					for (int k = 0; k < array6.Length; k++)
 					{
-						array3[k].m_CharacterRole = CharacterRole.Inmate;
+						array6[k].m_CharacterRole = CharacterRole.Inmate;
 					}
 				}
-				ModMenu.changeFloor = GUI.TextField(new Rect(100f, 270f, 180f, 30f), ModMenu.changeFloor, 25);
-				if (GUI.Button(new Rect(100f, 300f, 100f, 30f), "Change Floor"))
+				ModMenu.changeFloor = GUI.TextField(new Rect(100f, 270f, 180f, 30f), ModMenu.changeFloor, 25, guistyle);
+				if (GUI.Button(new Rect(100f, 300f, 180f, 30f), "Change Floor", guistyle))
 				{
 					foreach (FloorManager.Floor floor in FloorManager.GetInstance().m_PrisonFloors)
 					{
@@ -293,6 +318,35 @@ namespace ModMenuSpace
 						{
 							T17NetView.Find<Player>(2974).Teleport(T17NetView.Find<Player>(2974).m_CachedCurrentPosition, floor, true);
 							T17NetView.Find<Player>(2974).gameObject.GetComponent<CharacterSpeechBubbleHandler>().NewSpeech("Teleported  " + T17NetView.Find<Player>(2974).name + " to " + ModMenu.changeFloor, SpeechTone.Positive, 3f, 10, true);
+						}
+					}
+				}
+				if (GUI.Button(new Rect(100f, 330f, 180f, 30f), "[I] Infinite Durability", guistyle))
+				{
+					foreach (Item item9 in UnityEngine.Object.FindObjectsOfType<Item>())
+					{
+						Debug.Log("Font name: " + GUI.skin.button.font.name);
+					}
+				}
+				if (GUI.Button(new Rect(100f, 360f, 180f, 30f), "Give and Assign", guistyle))
+				{
+					Item[] array10 = (Item[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(Item));
+					foreach (Item item8 in UnityEngine.Object.FindObjectsOfType<Item>())
+					{
+						if (item8.m_ItemContainer == T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>())
+						{
+							MonoBehaviour.print(item8.ItemDataID + item8.ItemName);
+							if (item8.ItemDataID == 105)
+							{
+								foreach (ItemData itemData10 in UnityEngine.Object.FindObjectsOfType<ItemData>())
+								{
+									if (itemData10.name == "KeyMouldGreen_ItemData")
+									{
+										MonoBehaviour.print("found");
+										item8.m_ItemData = itemData10;
+									}
+								}
+							}
 						}
 					}
 				}
@@ -323,6 +377,25 @@ namespace ModMenuSpace
 			ModMenu.changeFloor = "eg. Floor0";
 			ModMenu.Test = 0;
 			ModMenu.Additionned = 0;
+			ModMenu.SearchedPlayerWantedItemWithItemdata = false;
+			ModMenu.SearchAllItemData = false;
+			ModMenu.SearchedAllItem = false;
+			ModMenu.Searchedallitemnameforunused = false;
+			ModMenu.intItemDataIDPlayerWants = "ID eg. 254";
+		}
+
+		// Token: 0x060094F6 RID: 38134
+		private static Texture2D MakeTexture(int width, int height, Color color)
+		{
+			Color[] pixels = new Color[width * height];
+			for (int i = 0; i < pixels.Length; i++)
+			{
+				pixels[i] = color;
+			}
+			Texture2D texture2D = new Texture2D(width, height);
+			texture2D.SetPixels(pixels);
+			texture2D.Apply();
+			return texture2D;
 		}
 
 		// Token: 0x040070FD RID: 28925
@@ -402,5 +475,23 @@ namespace ModMenuSpace
 
 		// Token: 0x04007119 RID: 28953
 		public static string changeFloor;
+
+		// Token: 0x040071D4 RID: 29140
+		public static PhotonMessageInfo photonMessageInfo;
+
+		// Token: 0x04007307 RID: 29447
+		public static bool SearchedPlayerWantedItemWithItemdata;
+
+		// Token: 0x0400732D RID: 29485
+		public static bool SearchAllItemData;
+
+		// Token: 0x0400734B RID: 29515
+		public static bool SearchedAllItem;
+
+		// Token: 0x04007388 RID: 29576
+		public static bool Searchedallitemnameforunused;
+
+		// Token: 0x04007671 RID: 30321
+		public static string intItemDataIDPlayerWants;
 	}
 }
