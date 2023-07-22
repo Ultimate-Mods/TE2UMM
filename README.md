@@ -30,11 +30,13 @@ This mod menu only works in Local or Only if you are the Host.
 
 • Speed Hack (Toggleable)
 
-• Open Every Doors
+• Open Every Doors (makes every doors open)
 
-• Be able to open White Doors 
+• Unlock every doors (be able to open them)
 
-• Give certains items
+• Give specificated items (Text field)
+
+• Change floor
 
 ## Prison Cheats
 
