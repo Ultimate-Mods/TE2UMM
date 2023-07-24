@@ -26,6 +26,8 @@ to download the mod u need to call the divin power of god and ask him to install
 
 ⚠️ PUTTING THE ModMenu.cs IN THE FILES AND DRAWING IT IS NOT RECOMMENDED AS I MODIFIED SOME TE2 CLASSES ⚠️ 
 
+⚠️ THIS DOES NOT WORK WITH WINDOWS 11 USERS BECAUSE THEY ARE FATHERLESS ⚠️ 
+
 # Features
 
 ## Player Cheat
