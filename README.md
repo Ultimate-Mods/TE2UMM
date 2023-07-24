@@ -34,7 +34,7 @@ This mod menu only works in Local/SinglePlayer or **only** if you are the Host.
 
 • Unlock every doors (be able to open them)
 
-• Give specificated items (Text field) (REVAMPED, it freezes and glitchy but technically better (down for more infos))
+• Give specificated items (Text field) (down for more infos)
 
 • Change floor
 
