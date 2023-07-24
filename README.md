@@ -58,13 +58,6 @@ This mod menu only works in Local/SinglePlayer or **only** if you are the Host.
 
 ![](https://media.discordapp.net/attachments/1123000484437958697/1131781481782591580/image.png)
 
-## The Give system
-
-Before, to give an item, I was just checking all items instances that already exists, pick the one the player wanted, then moved it to the player.
-
-Now, I use "Unused" items from the instances (they are empty items and there are like 400 of them), then put the ItemDataID of the item the player wants, then move the unused item to the player inventory.
-
-This is buggy and unstable, you should not use it.
 
 # Issues
 
@@ -75,6 +68,15 @@ This is buggy and unstable, you should not use it.
 • Random crashes if the game is running in background.
 
 # Explainations
+
+## The Give system
+
+Before, to give an item, I was just checking all items instances that already exists, pick the one the player wanted, then moved it to the player.
+
+Now, I use "Unused" items from the instances (they are empty items and there are like 400 of them), then put the ItemDataID of the item the player wants, then move the unused item to the player inventory.
+
+This is buggy and unstable, you should not use it.
+
 
 ## The Prison overwrite system
 
