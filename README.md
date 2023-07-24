@@ -64,6 +64,8 @@ Before, to give an item, I was just checking all items instances that already ex
 
 Now, I use "Unused" items from the instances (they are empty items and there are like 400 of them), then put the ItemDataID of the item the player wants, then move the unused item to the player inventory.
 
+This is buggy and unstable, you should not use it.
+
 ## The Prison overwrite system
 
 You will have a menu with every prisons, click which one you want, then it will overwrite Center Perks 2.0 to the prison you clicked.
