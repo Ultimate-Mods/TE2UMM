@@ -22,7 +22,7 @@ This mod menu only works in Local/SinglePlayer or **only** if you are the Host.
 
 # Installation
 
-Download Assembly-CSharp.dll and replace it in your game files.
+to download the mod u need to call the divin power of god and ask him to install it
 
 ⚠️ PUTTING THE ModMenu.cs IN THE FILES AND DRAWING IT IS NOT RECOMMENDED AS I MODIFIED SOME TE2 CLASSES ⚠️ 
 
