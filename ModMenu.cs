@@ -17,10 +17,10 @@ namespace ModMenuSpace
 			guistyle.alignment = TextAnchor.MiddleCenter;
 			guistyle.normal.textColor = Color.white;
 			guistyle.normal.background = ModMenu.MakeTexture(2, 2, new Color(0f, 0f, 0f, 0.5f));
-			GUIStyle labelStyle = new GUIStyle();
-			labelStyle.fontSize = 15;
-			labelStyle.alignment = TextAnchor.MiddleCenter;
-			labelStyle.normal.textColor = Color.white;
+			GUIStyle guistyle2 = new GUIStyle();
+			guistyle2.fontSize = 15;
+			guistyle2.alignment = TextAnchor.MiddleCenter;
+			guistyle2.normal.textColor = Color.white;
 			if (GUI.Button(new Rect(0f, 0f, 100f, 30f), "Cheats Menu", guistyle))
 			{
 				ModMenu.MenuVisible = !ModMenu.MenuVisible;
@@ -29,24 +29,305 @@ namespace ModMenuSpace
 			{
 				ModMenu.ItemMenuVisible = !ModMenu.ItemMenuVisible;
 			}
+			if (GUI.Button(new Rect(0f, 90f, 100f, 30f), "Prisons Menu", guistyle))
+			{
+				ModMenu.PrisonMenuVisible = !ModMenu.PrisonMenuVisible;
+			}
+			if (ModMenu.PrisonMenuVisible)
+			{
+				GUI.Box(new Rect(1100f, 0f, 500f, 200f), "Prisons Menu");
+				if (GUI.Button(new Rect(1100f, 60f, 180f, 30f), "Center Perks", guistyle))
+				{
+					foreach (PrisonData prisonData2 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData2.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo = prisonData2.m_LevelInfo;
+							levelInfo.m_AssociatedFile = "Centre_Perks";
+							levelInfo.m_PrisonEnum = LevelScript.PRISON_ENUM.Centre_Perks;
+							levelInfo.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData2.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_CentrePerks";
+							prisonData2.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_CentrePerks";
+							prisonData2.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_CenterPerks";
+							prisonData2.m_NameLocalizationKey = "Text.Prison.Centre_Perks";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 90f, 180f, 30f), "Cougar Creek Railroad", guistyle))
+				{
+					foreach (PrisonData prisonData3 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData3.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo2 = prisonData3.m_LevelInfo;
+							levelInfo2.m_AssociatedFile = "Transport_Train";
+							levelInfo2.m_PrisonEnum = LevelScript.PRISON_ENUM.Transport_Train;
+							levelInfo2.m_PrisonType = LevelScript.PRISON_TYPE.Transport;
+							prisonData3.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_Train";
+							prisonData3.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_Train";
+							prisonData3.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_Train";
+							prisonData3.m_NameLocalizationKey = "Text.Prison.Transport_Train";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 120f, 180f, 30f), "Rattlesnake Springs", guistyle))
+				{
+					foreach (PrisonData prisonData4 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData4.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo3 = prisonData4.m_LevelInfo;
+							levelInfo3.m_AssociatedFile = "OldWestFort";
+							levelInfo3.m_PrisonEnum = LevelScript.PRISON_ENUM.OldWestFort;
+							levelInfo3.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData4.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_WildWest";
+							prisonData4.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_OldWest";
+							prisonData4.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_OWF";
+							prisonData4.m_NameLocalizationKey = "Text.Prison.OldWestFort";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 150f, 180f, 30f), "K.A.P.O.W Camp", guistyle))
+				{
+					foreach (PrisonData prisonData5 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData5.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo4 = prisonData5.m_LevelInfo;
+							levelInfo4.m_AssociatedFile = "POW_Camp";
+							levelInfo4.m_PrisonEnum = LevelScript.PRISON_ENUM.POW_Camp;
+							levelInfo4.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData5.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_POW";
+							prisonData5.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_POW";
+							prisonData5.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_POW";
+							prisonData5.m_NameLocalizationKey = "Text.Prison.POW_Camp";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 180f, 180f, 30f), "H.M.S Orca", guistyle))
+				{
+					foreach (PrisonData prisonData6 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData6.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo5 = prisonData6.m_LevelInfo;
+							levelInfo5.m_AssociatedFile = "Transport_Boat";
+							levelInfo5.m_PrisonEnum = LevelScript.PRISON_ENUM.Transport_Boat;
+							levelInfo5.m_PrisonType = LevelScript.PRISON_TYPE.Transport;
+							prisonData6.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_Boat";
+							prisonData6.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_Boat";
+							prisonData6.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_Boat";
+							prisonData6.m_NameLocalizationKey = "Text.Prison.Transport_Boat";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 210f, 180f, 30f), "H.M.P Offshore", guistyle))
+				{
+					foreach (PrisonData prisonData7 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData7.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo6 = prisonData7.m_LevelInfo;
+							levelInfo6.m_AssociatedFile = "Oil_Rig";
+							levelInfo6.m_PrisonEnum = LevelScript.PRISON_ENUM.Oil_Rig;
+							levelInfo6.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData7.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_OilRig";
+							prisonData7.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_OilRig";
+							prisonData7.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_OilRig";
+							prisonData7.m_NameLocalizationKey = "Text.Prison.Oil_Rig";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 240f, 180f, 30f), "Fort Tundra", guistyle))
+				{
+					foreach (PrisonData prisonData8 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData8.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo7 = prisonData8.m_LevelInfo;
+							levelInfo7.m_AssociatedFile = "Gulag_Prison";
+							levelInfo7.m_PrisonEnum = LevelScript.PRISON_ENUM.Gulag_Prison;
+							levelInfo7.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData8.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_Gulag";
+							prisonData8.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_Gulag";
+							prisonData8.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_Gulag";
+							prisonData8.m_NameLocalizationKey = "Text.Prison.Gulag_Prison";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 270f, 180f, 30f), "Area 17", guistyle))
+				{
+					foreach (PrisonData prisonData9 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData9.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo8 = prisonData9.m_LevelInfo;
+							levelInfo8.m_AssociatedFile = "Area_17";
+							levelInfo8.m_PrisonEnum = LevelScript.PRISON_ENUM.Area_17;
+							levelInfo8.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData9.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_Area17";
+							prisonData9.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_Area17";
+							prisonData9.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_Area17";
+							prisonData9.m_NameLocalizationKey = "Text.Prison.Area_17";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 300f, 180f, 30f), "Air Force Con", guistyle))
+				{
+					foreach (PrisonData prisonData10 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData10.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo9 = prisonData10.m_LevelInfo;
+							levelInfo9.m_AssociatedFile = "Transport_Plane";
+							levelInfo9.m_PrisonEnum = LevelScript.PRISON_ENUM.Transport_Plane;
+							levelInfo9.m_PrisonType = LevelScript.PRISON_TYPE.Transport;
+							prisonData10.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_Plane";
+							prisonData10.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_Plane";
+							prisonData10.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_Plane";
+							prisonData10.m_NameLocalizationKey = "Text.Prison.Transport_Plane";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 330f, 180f, 30f), "U.S.S Anomaly", guistyle))
+				{
+					foreach (PrisonData prisonData11 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData11.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo10 = prisonData11.m_LevelInfo;
+							levelInfo10.m_AssociatedFile = "Space Prison";
+							levelInfo10.m_PrisonEnum = LevelScript.PRISON_ENUM.Space_Prison;
+							levelInfo10.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData11.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_Space";
+							prisonData11.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_Space";
+							prisonData11.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_Space";
+							prisonData11.m_NameLocalizationKey = "Text.Prison.Space_Prison";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 360f, 180f, 30f), "The Glorious Regime", guistyle))
+				{
+					foreach (PrisonData prisonData12 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData12.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo11 = prisonData12.m_LevelInfo;
+							levelInfo11.m_AssociatedFile = "Dictator_Prison";
+							levelInfo11.m_PrisonEnum = LevelScript.PRISON_ENUM.Dictator;
+							levelInfo11.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData12.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_DictatorVillage";
+							prisonData12.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_Dictator";
+							prisonData12.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_Dictator";
+							prisonData12.m_NameLocalizationKey = "Text.Prison.Dictator";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 390f, 180f, 30f), "Wicked Ward", guistyle))
+				{
+					foreach (PrisonData prisonData13 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData13.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo12 = prisonData13.m_LevelInfo;
+							levelInfo12.m_AssociatedFile = "Halloween_Prison";
+							levelInfo12.m_PrisonEnum = LevelScript.PRISON_ENUM.DLC02;
+							levelInfo12.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData13.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_Asylum";
+							prisonData13.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_WickedWard";
+							prisonData13.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_WickedWard";
+							prisonData13.m_NameLocalizationKey = "Text.Menu.DLCName02";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 420f, 180f, 30f), "Santa's Shakedown", guistyle))
+				{
+					foreach (PrisonData prisonData14 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData14.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo13 = prisonData14.m_LevelInfo;
+							levelInfo13.m_AssociatedFile = "DLC03_Prison";
+							levelInfo13.m_PrisonEnum = LevelScript.PRISON_ENUM.DLC03;
+							levelInfo13.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData14.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_DLC03";
+							prisonData14.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_DLC03";
+							prisonData14.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_DLC03";
+							prisonData14.m_NameLocalizationKey = "Text.Menu.DLCName03";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 450f, 180f, 30f), "Big Top Breakout", guistyle))
+				{
+					foreach (PrisonData prisonData15 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData15.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo14 = prisonData15.m_LevelInfo;
+							levelInfo14.m_AssociatedFile = "DLC04_Prison";
+							levelInfo14.m_PrisonEnum = LevelScript.PRISON_ENUM.DLC04;
+							levelInfo14.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData15.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_DLC04";
+							prisonData15.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_DLC04";
+							prisonData15.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_DLC04";
+							prisonData15.m_NameLocalizationKey = "Text.Menu.DLCName04";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 480f, 180f, 30f), "Dungeons And Duct Tape", guistyle))
+				{
+					foreach (PrisonData prisonData16 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData16.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo15 = prisonData16.m_LevelInfo;
+							levelInfo15.m_AssociatedFile = "DLC05_Prison";
+							levelInfo15.m_PrisonEnum = LevelScript.PRISON_ENUM.DLC05;
+							levelInfo15.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData16.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_DLC05";
+							prisonData16.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_DLC05";
+							prisonData16.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_DLC05";
+							prisonData16.m_NameLocalizationKey = "Text.Menu.DLCName05";
+						}
+					}
+				}
+				if (GUI.Button(new Rect(1100f, 510f, 180f, 30f), "Snow Way Out", guistyle))
+				{
+					foreach (PrisonData prisonData17 in (PrisonData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(PrisonData)))
+					{
+						if (prisonData17.name == "CenterPerks_FrontendLevelData")
+						{
+							PrisonData.LevelInfo levelInfo16 = prisonData17.m_LevelInfo;
+							levelInfo16.m_AssociatedFile = "DLC06_Prison";
+							levelInfo16.m_PrisonEnum = LevelScript.PRISON_ENUM.DLC06;
+							levelInfo16.m_PrisonType = LevelScript.PRISON_TYPE.Normal;
+							prisonData17.m_ImagePath = "LevelPreviewImages/FE_LevelPreview_DLC06";
+							prisonData17.m_PrisonSetupImagePath = "LevelPreviewImages/FE_SetUpMenu_RollCallBacking_DLC06";
+							prisonData17.m_RoundResultsImagePath = "RoundResultsImages/FE_Roundscore_DLC06";
+							prisonData17.m_NameLocalizationKey = "Text.Menu.DLCName06";
+						}
+					}
+				}
+			}
 			if (ModMenu.ItemMenuVisible)
 			{
 				GUI.Box(new Rect(600f, 0f, 500f, 400f), "Items Menu");
 				ModMenu.stringGiveItemToPlayer = GUI.TextField(new Rect(600f, 30f, 180f, 30f), ModMenu.stringGiveItemToPlayer, 50, guistyle);
 				if (GUI.Button(new Rect(600f, 60f, 180f, 30f), "Give Item: Name", guistyle))
 				{
-					foreach (Item item4 in UnityEngine.Object.FindObjectsOfType<Item>())
+					foreach (Item item in UnityEngine.Object.FindObjectsOfType<Item>())
 					{
 						MonoBehaviour.print("found all items");
-						if (item4.ItemName == "No ItemData Set")
+						if (item.ItemName == "No ItemData Set")
 						{
-							foreach (ItemData itemData8 in (ItemData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(ItemData)))
+							foreach (ItemData itemData in (ItemData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(ItemData)))
 							{
-								if (itemData8.name == ModMenu.stringGiveItemToPlayer + "_ItemData")
+								if (itemData.name == ModMenu.stringGiveItemToPlayer + "_ItemData")
 								{
 									MonoBehaviour.print("found");
-									item4.m_ItemData = itemData8;
-									T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item4, false, RPC_CallContexts.All);
+									item.m_ItemData = itemData;
+									item.name = itemData.m_ItemLocalizationTag + "_JkoCustom";
+									T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item, false, RPC_CallContexts.All);
 								}
 							}
 							break;
@@ -56,19 +337,20 @@ namespace ModMenuSpace
 				ModMenu.intItemDataIDPlayerWants = GUI.TextField(new Rect(600f, 100f, 180f, 30f), ModMenu.intItemDataIDPlayerWants, 25, guistyle);
 				if (GUI.Button(new Rect(600f, 130f, 180f, 30f), "Give item: ID", guistyle))
 				{
-					foreach (Item item5 in UnityEngine.Object.FindObjectsOfType<Item>())
+					foreach (Item item2 in UnityEngine.Object.FindObjectsOfType<Item>())
 					{
 						MonoBehaviour.print("found all items");
-						if (item5.ItemName == "No ItemData Set")
+						if (item2.ItemName == "No ItemData Set")
 						{
 							MonoBehaviour.print("found unused items");
-							foreach (ItemData itemData9 in (ItemData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(ItemData)))
+							foreach (ItemData itemData2 in (ItemData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(ItemData)))
 							{
-								if (itemData9.m_ItemDataID == int.Parse(ModMenu.intItemDataIDPlayerWants))
+								if (itemData2.m_ItemDataID == int.Parse(ModMenu.intItemDataIDPlayerWants))
 								{
 									MonoBehaviour.print("found");
-									item5.m_ItemData = itemData9;
-									T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item5, false, RPC_CallContexts.All);
+									item2.m_ItemData = itemData2;
+									item2.name = itemData2.m_ItemLocalizationTag + "_JkoCustom";
+									T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item2, false, RPC_CallContexts.All);
 								}
 							}
 							break;
@@ -79,9 +361,9 @@ namespace ModMenuSpace
 			if (ModMenu.MenuVisible)
 			{
 				GUI.Box(new Rect(100f, 0f, 500f, 400f), "TE2UMM");
-				GUI.Label(new Rect(100f, 0f, 180f, 30f), "Player Cheats", labelStyle);
-				GUI.Label(new Rect(400f, 0f, 180f, 30f), "Prison Cheats", labelStyle);
-				GUI.Label(new Rect(400f, 170f, 180f, 30f), "Map Editor Cheats", labelStyle);
+				GUI.Label(new Rect(100f, 0f, 180f, 30f), "Player Cheats", guistyle2);
+				GUI.Label(new Rect(400f, 0f, 180f, 30f), "Prison Cheats", guistyle2);
+				GUI.Label(new Rect(400f, 170f, 180f, 30f), "Map Editor Cheats", guistyle2);
 				if (GUI.Button(new Rect(100f, 30f, 180f, 30f), ModMenu.MaxPlayerStatsLabel, guistyle))
 				{
 					ConfigManager instance = ConfigManager.GetInstance();
@@ -231,12 +513,12 @@ namespace ModMenuSpace
 				if (GUI.Button(new Rect(100f, 150f, 180f, 30f), ModMenu.GiveLabel, guistyle))
 				{
 					ModMenu.GiveLabel = "Give Destroy Wall Tool";
-					foreach (Item item6 in UnityEngine.Object.FindObjectsOfType<Item>())
+					foreach (Item item3 in UnityEngine.Object.FindObjectsOfType<Item>())
 					{
-						if (item6.ItemName == "Text.Item.MaintenanceSwissDestroy" && !ModMenu.GaveItem)
+						if (item3.ItemName == "Text.Item.MaintenanceSwissDestroy" && !ModMenu.GaveItem)
 						{
 							ModMenu.GaveItem = true;
-							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item6, false, RPC_CallContexts.All);
+							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item3, false, RPC_CallContexts.All);
 						}
 					}
 					ModMenu.GaveItem = false;
@@ -244,12 +526,12 @@ namespace ModMenuSpace
 				if (GUI.Button(new Rect(100f, 180f, 180f, 30f), ModMenu.GiveStaffKeyLabel, guistyle))
 				{
 					ModMenu.GiveStaffKeyLabel = "Give Staff Key";
-					foreach (Item item7 in UnityEngine.Object.FindObjectsOfType<Item>())
+					foreach (Item item4 in UnityEngine.Object.FindObjectsOfType<Item>())
 					{
-						if (item7.ItemName == "Text.Item.StaffKey" && !ModMenu.GaveItem)
+						if (item4.ItemName == "Text.Item.StaffKey" && !ModMenu.GaveItem)
 						{
 							ModMenu.GaveItem = true;
-							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item7, false, RPC_CallContexts.All);
+							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item4, false, RPC_CallContexts.All);
 						}
 					}
 					ModMenu.GaveItem = false;
@@ -303,10 +585,10 @@ namespace ModMenuSpace
 				}
 				if (GUI.Button(new Rect(100f, 240f, 180f, 30f), "All NPC Hittable", guistyle))
 				{
-					AIPlayer[] array6 = UnityEngine.Object.FindObjectsOfType<AIPlayer>();
-					for (int k = 0; k < array6.Length; k++)
+					AIPlayer[] array4 = UnityEngine.Object.FindObjectsOfType<AIPlayer>();
+					for (int k = 0; k < array4.Length; k++)
 					{
-						array6[k].m_CharacterRole = CharacterRole.Inmate;
+						array4[k].m_CharacterRole = CharacterRole.Inmate;
 					}
 				}
 				ModMenu.changeFloor = GUI.TextField(new Rect(100f, 270f, 180f, 30f), ModMenu.changeFloor, 25, guistyle);
@@ -321,35 +603,6 @@ namespace ModMenuSpace
 						}
 					}
 				}
-				if (GUI.Button(new Rect(100f, 330f, 180f, 30f), "[I] Infinite Durability", guistyle))
-				{
-					foreach (Item item9 in UnityEngine.Object.FindObjectsOfType<Item>())
-					{
-						Debug.Log("Font name: " + GUI.skin.button.font.name);
-					}
-				}
-				if (GUI.Button(new Rect(100f, 360f, 180f, 30f), "Give and Assign", guistyle))
-				{
-					Item[] array10 = (Item[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(Item));
-					foreach (Item item8 in UnityEngine.Object.FindObjectsOfType<Item>())
-					{
-						if (item8.m_ItemContainer == T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>())
-						{
-							MonoBehaviour.print(item8.ItemDataID + item8.ItemName);
-							if (item8.ItemDataID == 105)
-							{
-								foreach (ItemData itemData10 in UnityEngine.Object.FindObjectsOfType<ItemData>())
-								{
-									if (itemData10.name == "KeyMouldGreen_ItemData")
-									{
-										MonoBehaviour.print("found");
-										item8.m_ItemData = itemData10;
-									}
-								}
-							}
-						}
-					}
-				}
 			}
 		}
 
@@ -358,6 +611,7 @@ namespace ModMenuSpace
 		{
 			ModMenu.MenuLabel = "TE2 Ultimate Mod Menu";
 			ModMenu.MenuVisible = false;
+			ModMenu.PrisonMenuVisible = false;
 			ModMenu.ItemMenuVisible = false;
 			ModMenu.MaxPlayerStatsLabel = "Max Player Stats";
 			ModMenu.NoclipActive = false;
@@ -384,16 +638,16 @@ namespace ModMenuSpace
 			ModMenu.intItemDataIDPlayerWants = "ID eg. 254";
 		}
 
-		// Token: 0x060094F6 RID: 38134
+		// Token: 0x06009433 RID: 37939
 		private static Texture2D MakeTexture(int width, int height, Color color)
 		{
-			Color[] pixels = new Color[width * height];
-			for (int i = 0; i < pixels.Length; i++)
+			Color[] array = new Color[width * height];
+			for (int i = 0; i < array.Length; i++)
 			{
-				pixels[i] = color;
+				array[i] = color;
 			}
 			Texture2D texture2D = new Texture2D(width, height);
-			texture2D.SetPixels(pixels);
+			texture2D.SetPixels(array);
 			texture2D.Apply();
 			return texture2D;
 		}
@@ -473,25 +727,31 @@ namespace ModMenuSpace
 		// Token: 0x04007115 RID: 28949
 		public static string stringGiveItemToPlayer;
 
-		// Token: 0x04007119 RID: 28953
+		// Token: 0x04007116 RID: 28950
 		public static string changeFloor;
 
-		// Token: 0x040071D4 RID: 29140
+		// Token: 0x04007117 RID: 28951
 		public static PhotonMessageInfo photonMessageInfo;
 
-		// Token: 0x04007307 RID: 29447
+		// Token: 0x04007118 RID: 28952
 		public static bool SearchedPlayerWantedItemWithItemdata;
 
-		// Token: 0x0400732D RID: 29485
+		// Token: 0x04007119 RID: 28953
 		public static bool SearchAllItemData;
 
-		// Token: 0x0400734B RID: 29515
+		// Token: 0x0400711A RID: 28954
 		public static bool SearchedAllItem;
 
-		// Token: 0x04007388 RID: 29576
+		// Token: 0x0400711B RID: 28955
 		public static bool Searchedallitemnameforunused;
 
-		// Token: 0x04007671 RID: 30321
+		// Token: 0x0400711C RID: 28956
 		public static string intItemDataIDPlayerWants;
+
+		// Token: 0x0400711D RID: 28957
+		public static string prisonPW;
+
+		// Token: 0x04007120 RID: 28960
+		public static bool PrisonMenuVisible;
 	}
 }
