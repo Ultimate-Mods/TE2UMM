@@ -510,32 +510,6 @@ namespace ModMenuSpace
 						((AICharacter_Dog)aicharacter3).gameObject.GetComponent<AIPlayer>().m_CharacterRole = CharacterRole.Dog;
 					}
 				}
-				if (GUI.Button(new Rect(100f, 150f, 180f, 30f), ModMenu.GiveLabel, guistyle))
-				{
-					ModMenu.GiveLabel = "Give Destroy Wall Tool";
-					foreach (Item item3 in UnityEngine.Object.FindObjectsOfType<Item>())
-					{
-						if (item3.ItemName == "Text.Item.MaintenanceSwissDestroy" && !ModMenu.GaveItem)
-						{
-							ModMenu.GaveItem = true;
-							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item3, false, RPC_CallContexts.All);
-						}
-					}
-					ModMenu.GaveItem = false;
-				}
-				if (GUI.Button(new Rect(100f, 180f, 180f, 30f), ModMenu.GiveStaffKeyLabel, guistyle))
-				{
-					ModMenu.GiveStaffKeyLabel = "Give Staff Key";
-					foreach (Item item4 in UnityEngine.Object.FindObjectsOfType<Item>())
-					{
-						if (item4.ItemName == "Text.Item.StaffKey" && !ModMenu.GaveItem)
-						{
-							ModMenu.GaveItem = true;
-							T17NetView.Find<Player>(2974).gameObject.GetComponent<ItemContainer>().AddItemRPC(item4, false, RPC_CallContexts.All);
-						}
-					}
-					ModMenu.GaveItem = false;
-				}
 				if (GUI.Button(new Rect(400f, 120f, 180f, 30f), ModMenu.ElectricFencesLabel, guistyle))
 				{
 					ModMenu.ElectricFencesActive = !ModMenu.ElectricFencesActive;
@@ -603,6 +577,39 @@ namespace ModMenuSpace
 						}
 					}
 				}
+				if (GUI.Button(new Rect(100f, 330f, 180f, 30f), "Free craft", guistyle))
+				{
+					CraftManager instance4 = CraftManager.GetInstance();
+					if (instance4 != null)
+					{
+						List<CraftManager.Recipe> currentRecipes = instance4.GetCurrentRecipes();
+						for (int num2 = 0; num2 < currentRecipes.Count; num2++)
+						{
+							currentRecipes.ElementAt(num2).m_Ingredients = new ItemData[3];
+						}
+					}
+				}
+				if (GUI.Button(new Rect(100f, 360f, 180f, 30f), "Add Crafting Recipes", guistyle) && CraftManager.GetInstance() != null)
+				{
+					foreach (ItemData itemData3 in (ItemData[])UnityEngine.Object.FindObjectsOfTypeIncludingAssets(typeof(ItemData)))
+					{
+						if (itemData3.name == ModMenu.stringGiveItemToPlayer + "_ItemData")
+						{
+							CraftManager.Recipe recipe = new CraftManager.Recipe();
+							List<ItemData> allowedList = ItemManager.GetInstance().GetAllowedList();
+							List<CraftManager.Recipe> currentRecipes2 = CraftManager.GetInstance().GetCurrentRecipes();
+							recipe.m_bDiscovered = true;
+							recipe.m_bHidden = false;
+							recipe.m_Product = itemData3;
+							recipe.m_Intellect = 70;
+							recipe.m_CraftedCount = ++ModMenu.Additionned;
+							currentRecipes2.Add(recipe);
+							allowedList.Add(itemData3);
+							ModMenu.Additionned++;
+							T17NetView.Find<Player>(2974).gameObject.GetComponent<CharacterSpeechBubbleHandler>().NewSpeech("Added recipe for  " + recipe.m_Product.name, SpeechTone.Positive, 3f, 10, true);
+						}
+					}
+				}
 			}
 		}
 
@@ -630,7 +637,7 @@ namespace ModMenuSpace
 			ModMenu.stringGiveItemToPlayer = "PlaceHolder";
 			ModMenu.changeFloor = "eg. Floor0";
 			ModMenu.Test = 0;
-			ModMenu.Additionned = 0;
+			ModMenu.Additionned = 6;
 			ModMenu.SearchedPlayerWantedItemWithItemdata = false;
 			ModMenu.SearchAllItemData = false;
 			ModMenu.SearchedAllItem = false;
