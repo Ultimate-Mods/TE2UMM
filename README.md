@@ -66,6 +66,16 @@ Now, I use "Unused" items from the instances (they are empty items and there are
 
 This is buggy and unstable, you should not use it.
 
+# Issues
+
+• If you give yourself an item, it will dispear when you leave and comeback.
+
+• Given Items dropped icons are blank.
+
+• Random crashes if the game is running in background.
+
+# Explainations
+
 ## The Prison overwrite system
 
 You will have a menu with every prisons, click which one you want, then it will overwrite Center Perks 2.0 to the prison you clicked.
