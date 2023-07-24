@@ -15,7 +15,7 @@ This mod menu only works in Local/SinglePlayer or **only** if you are the Host.
 - [x] Level Editor Cheats/Utility
 - [x] Better UI Design
 - [x] Give item with text box (No spaces)
-- [ ] Free craft
+- [x] Free craft
 - [x] Change floor cheat
 - [ ] Destroy environment cheat (eg the wall in front of you)
 - [x] Load any prisons (even DLCs u dont own)
@@ -45,6 +45,10 @@ Download Assembly-CSharp.dll and replace it in your game files.
 • Change floor
 
 • "Load" any playable prisons (down for more infos)
+
+• Free craft (Must have one item in your inventory)
+
+• Add custom recipes for items you want
 
 ## Prison Cheats
 
@@ -77,12 +81,9 @@ Download Assembly-CSharp.dll and replace it in your game files.
 
 ## The Give system
 
-Before, to give an item, I was just checking all items instances that already exists, pick the one the player wanted, then moved it to the player.
-
-Now, I use "Unused" items from the instances (they are empty items and there are like 400 of them), then put the ItemDataID of the item the player wants, then move the unused item to the player inventory.
-
 This is buggy and unstable, you should not use it.
 
+Use add custom recipe instead.
 
 ## The Prison overwrite system
 
