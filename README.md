@@ -20,6 +20,12 @@ This mod menu only works in Local/SinglePlayer or **only** if you are the Host.
 - [ ] Destroy environment cheat (eg the wall in front of you)
 - [x] Load any prisons (even DLCs u dont own)
 
+# Installation
+
+Download Assembly-CSharp.dll and replace it in your game files.
+
+⚠️ PUTTING THE ModMenu.cs IN THE FILES AND DRAWING IT IS NOT RECOMMENDED AS I MODIFIED SOME TE2 CLASSES ⚠️ 
+
 # Features
 
 ## Player Cheat
