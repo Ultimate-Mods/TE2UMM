@@ -32,6 +32,8 @@ Download Assembly-CSharp.dll and replace it in your game files.
 
 • Max Player Stats
 
+• GodMode (finally) (Toggleable)
+
 • Noclip (Toggleable)
 
 • Speed Hack (Toggleable)
