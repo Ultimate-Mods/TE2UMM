@@ -18,7 +18,8 @@ This mod menu only works in Local/SinglePlayer or **only** if you are the Host.
 - [x] Free craft
 - [x] Change floor cheat
 - [ ] Spawn NPCs
-- [ ] Destroy environment cheat (eg the wall in front of you)
+- [ ] Fully custom level editor (building blocks or completely custom level editor)
+- [x] Destroy environment cheat (eg the wall in front of you)
 - [x] Load any prisons (even DLCs u dont own)
 
 # Installation
@@ -54,6 +55,8 @@ to download the mod u need to call the divin power of god and ask him to install
 • Free craft (Must have one item in your inventory)
 
 • Add custom recipes for items you want
+
+• Destroy nearest tile (wall, doors...)
 
 ## Prison Cheats
 
