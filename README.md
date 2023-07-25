@@ -57,11 +57,9 @@ to download the mod u need to call the divin power of god and ask him to install
 
 ## Prison Cheats
 
-• Lockdown (Toggleable)
+• Lockdown
 
-• Toggle Electirc Fences (Toggleable)
-
-• Make all NPCs hittable
+• Freeze time (Routine)
 
 • Disable dogs
 
