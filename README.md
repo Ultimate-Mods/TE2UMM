@@ -17,6 +17,7 @@ This mod menu only works in Local/SinglePlayer or **only** if you are the Host.
 - [x] Give item with text box (No spaces)
 - [x] Free craft
 - [x] Change floor cheat
+- [ ] Spawn NPCs
 - [ ] Destroy environment cheat (eg the wall in front of you)
 - [x] Load any prisons (even DLCs u dont own)
 
