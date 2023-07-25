@@ -94,3 +94,8 @@ Use add custom recipe instead.
 You will have a menu with every prisons, click which one you want, then it will overwrite Center Perks 2.0 to the prison you clicked.
 
 Saving and loading works. No issues found
+
+## Edited Classes
+
+• ItemManager
+• CharacterStats
