@@ -6,12 +6,10 @@ This mod menu **should only** be used in single-player.
 
 This DLL is completly safe, you can grab the source code using DNSpy.
 
-This mod menu only works in Local/SinglePlayer or **only** if you are the Host.
-
 # TO DO LIST
 
 - [x] Player & Prison Cheats
-- [ ] ~~Multiplayer Cheats~~
+- [x] Multiplayer "Support"
 - [x] Level Editor Cheats/Utility
 - [x] Better UI Design
 - [x] Give item with text box (No spaces)
