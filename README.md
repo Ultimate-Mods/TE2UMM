@@ -98,4 +98,6 @@ Saving and loading works. No issues found
 ## Edited Classes
 
 • ItemManager
+
 • CharacterStats
+
